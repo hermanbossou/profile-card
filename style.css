@@ -1,0 +1,189 @@
+/***  GLOBAL  ***/
+:root {
+  /* colors */
+  --white: #fff;
+  --black: #000;
+  --color-heading: #050505;
+  --color-paragraph: #535353;
+  --gold: #f5d04e;
+  --gold-version-2: #f3be2c;
+
+  /* fonts */
+  --fs-100: 1rem; /* 16px */
+  --fs-200: clamp(1rem, 0.962rem + 0.185vw, 1.125rem); /* 16-18px */
+  --fs-300: clamp(1.5rem, 1.351rem + 0.74vw, 2rem); /* 24-32px */
+  --fs-400: clamp(2.25rem, 1.99rem + 1.296vw, 3.125rem); /* 36-50px */
+
+  --text-body: var(--fs-100);
+  --text-body-lg: var(--fs-200);
+  --text-heading: var(--fs-300);
+  --text-heading-lg: var(--fs-400);
+
+  /* spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+
+  /* border radius */
+  --radius-sm: 0.625rem;
+  --radius-md: 1.25rem;
+  --radius-lg: 1.875rem;
+  --radius-square: 50%;
+
+  /* effects */
+  --shadow-main: 6px 6px 0px 0px var(--color-heading);
+  --transition-speed: 0.25s;
+}
+
+body {
+  background-color: var(--gold);
+  font-size: var(--text-body-lg);
+}
+/* set headings to dark text */
+h1,
+h2 {
+  color: var(--color-heading);
+}
+/* set paragraphs to light dark */
+p {
+  color: var(--color-paragraph);
+}
+
+/* reset default box sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+
+/***  END OF GLOBAL  ***/
+
+/***  SECTION 1  ***/
+/* main container */
+.container {
+  width: min(90%, 1400px);
+  margin: auto;
+}
+
+/* content wrapper */
+.section-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /*align-items: center;*/
+  gap: 60px;
+  padding: 5rem 0;
+}
+
+/* manga items wrapper */
+.manga-items-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* h1 font size */
+h1 {
+  font-size: var(--text-heading-lg);
+  text-align: center;
+}
+
+/* individual manga item */
+.manga-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: calc((100% - 4rem) / 3);
+  position: relative;
+  background-color: var(--white);
+  border: 1px solid var(--black);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  gap: 24px;
+  transition: box-shadow var(--transition-speed) ease-in-out;
+}
+
+/* adjust item width based on screen size */
+@media(width <= 1024px){
+.manga-item {
+  width: calc((100% - 2rem) / 2);
+}
+}
+@media(width <= 767px){
+.manga-item {
+  width: 100%;
+  padding: 30px 20px;
+}
+}
+
+/* add box shadow to item on hover */
+.manga-item:hover {
+  box-shadow: var(--shadow-main);
+}
+/* change button color on card hover */
+.manga-item:hover .manga-item-button{
+  background-color: var(--gold-version-2);
+}
+
+/* round image borders */
+.manga-item img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+/* card title font size */
+.manga-item h2 {
+  font-size: var(--text-heading);
+}
+/* truncate paragraphs to 3 lines */
+.manga-item p{
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limit the text to 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* buttons */
+.manga-item-button {
+  background-color: var(--gold);
+  color: var(--color-heading);
+  padding: 1rem;
+  text-decoration: none;
+  font-size: var(--text-body-lg);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  margin-top: auto;
+  transition: background-color var(--transition-speed) ease-in-out;
+}
+
+/* badge */
+.manga-item .badge {
+  aspect-ratio: 1/1;
+  border-radius: var(--radius-square);
+  background-color: var(--white);
+  color:  var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: var(--text-body-lg);
+  border: 10px solid var(--gold);
+  position: absolute;
+  top: -25px;
+  left: -25px;
+  width: 65px;
+  aspect-ratio: 1/1;
+  z-index: 2;
+}
+@media(width <= 767px){
+.manga-item .badge {
+  width: 60px;
+}
+}
+
+/***  END OF SECTION 1  ***/
