@@ -11,3 +11,7 @@ A responsive integration showcasing my top 5 manga books (Berserk, Vinland Saga,
 - **Git & GitHub**
 
 ##  Live Preview
+[https://hermanbossou.github.io/profile-card/]
+
+##  Screenshot
+![Screenshot](images/screenshot.webp)
