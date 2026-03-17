@@ -8,6 +8,7 @@ A responsive integration showcasing my top 5 manga books (Berserk, Vinland Saga,
 ##  Technologies used
 - **HTML5** 
 - **CSS3** 
+- **JS** 
 - **Git & GitHub**
 
 ##  Live Preview
