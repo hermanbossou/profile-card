@@ -35,6 +35,7 @@
 
   /* effects */
   --shadow-main: 6px 6px 0px 0px var(--color-heading);
+  --shadow-main-hover: 6px 6px 0px 0px var(--heart-button-hover);
   --transition-speed: 0.25s;
 }
 
@@ -100,11 +101,11 @@ h1 {
   width: calc((100% - 4rem) / 3);
   position: relative;
   background-color: var(--white);
-  border: 1px solid var(--black);
+  border: 2px solid var(--black);
   border-radius: var(--radius-lg);
   padding: 30px;
   gap: 24px;
-  transition: box-shadow var(--transition-speed) ease-in-out;
+  transition: box-shadow var(--transition-speed) ease-in-out, border-color var(--transition-speed) ease-in-out;
 }
 
 /* adjust item width based on screen size */
@@ -180,6 +181,8 @@ h1 {
   width: 65px;
   aspect-ratio: 1/1;
   z-index: 2;
+  transition: background-color var(--transition-speed) ease-in-out, color var(--transition-speed) ease-in-out;
+
 }
 @media(width <= 767px){
 .manga-item .badge {
@@ -196,7 +199,7 @@ h1 {
   justify-content: space-between;
 
 }
-/* like heart button */
+/* like button */
 svg.heart-svg {
   cursor: pointer;
   overflow: visible;
@@ -208,70 +211,15 @@ svg.heart-svg {
 }
 svg.heart-svg path {
   transition: fill var(--transition-speed) ease-in-out, transform var(--transition-speed) ease-in-out;
-  animation: animateCircle 2s ease-in-out 0 1 forwards;
+  /*animation: animateCircle 2s ease-in-out 0 1 forwards;*/
+  transform-origin: center;
+
 }
 svg.heart-svg path:hover {
-  fill: var(--heart-button-hover);
-  transform: scale(1.02);
-  transform-origin: center;
+  /*fill: var(--heart-button-hover);*/
+  transform: scale(1.2);
 }
-
-@keyframes animateCircle {
-  40% {
-    transform: scale(10);
-    opacity: 1;
-    fill: #dd4688;
-  }
-  55% {
-    transform: scale(11);
-    opacity: 1;
-    fill: #d46abf;
-  }
-  65% {
-    transform: scale(12);
-    opacity: 1;
-    fill: #cc8ef5;
-  }
-  75% {
-    transform: scale(13);
-    opacity: 1;
-    fill: transparent;
-    stroke: #cc8ef5;
-    stroke-width: 0.5;
-  }
-  85% {
-    transform: scale(17);
-    opacity: 1;
-    fill: transparent;
-    stroke: #cc8ef5;
-    stroke-width: 0.2;
-  }
-  95% {
-    transform: scale(18);
-    opacity: 1;
-    fill: transparent;
-    stroke: #cc8ef5;
-    stroke-width: 0.1;
-  }
-  100% {
-    transform: scale(19);
-    opacity: 1;
-    fill: transparent;
-    stroke: #cc8ef5;
-    stroke-width: 0;
-  }
-}
-@keyframes animateHeart {
-  0% {
-    transform: scale(0.2);
-  }
-  40% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
+/* like button entry animation */
 @keyframes animateHeartOut {
   0% {
     transform: scale(1.4);
@@ -279,6 +227,21 @@ svg.heart-svg path:hover {
   100% {
     transform: scale(1);
   }
+}
+
+/* create a class when the like button is clicked */
+.is-favorite{
+  border-color: var(--heart-button-hover);
+}
+.is-favorite:hover{
+  box-shadow: var(--shadow-main-hover);
+}
+.is-favorite .heart-svg path{
+  fill: var(--heart-button-hover);
+}
+.is-favorite .badge{
+  background-color: var(--heart-button-hover);
+  color: var(--white);
 }
 
 /***  END OF SECTION 1  ***/
